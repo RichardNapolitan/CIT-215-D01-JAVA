@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer App</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        input { margin: 5px; padding: 5px; }
+        button { padding: 5px 10px; }
+    </style>
+
+</head>
+<body>
+<h1>Richard's Customer App</h1>
+
+<form th:action="@{/create}" method="post">
+    <input type="text" name="name" placeholder="Name" th:value="${customer.name}" required />
+    <input type="email" name="email" placeholder="Email" th:value="${customer.email}" required />
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    <li th:each="c : ${customers}">
+        <span th:text="${c.name}"></span>
+        (Email: <span th:text="${c.email}"></span>)
+    </li>
+</ul>
+</body>
+</html>
